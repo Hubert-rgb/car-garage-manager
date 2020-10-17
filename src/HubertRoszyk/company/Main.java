@@ -348,6 +348,5 @@ class Buff {
             }
         }
         return (mechanics);
-        //dodaje coś
     }
 }
