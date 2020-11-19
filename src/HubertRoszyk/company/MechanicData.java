@@ -1,27 +1,32 @@
 package HubertRoszyk.company;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 class MechanicData { //data zmienić na 2 dane
-    Scanner scanner = new Scanner(System.in); //dużo metod
-    int repearingCars = 0;
-    List<String[]> repairingCarsList = new ArrayList<String[]>();
-    String[] data = null;
+    MainClassManager mainClassManager = new MainClassManager();//dużo metod
+    //int repearingCars = 0;
+    //List<CarData> repairingCarsList = new ArrayList<CarData>();
+    List<String> mechanicData = new ArrayList<String>();
+    String firstName, lastName;
+    int id;
+    //List<String> repearingCars = new ArrayList<String>();
 
-    public String[] newData() { //konstruktorem
-        System.out.println("Wpisz imię pracownika");
-        String firstName = scanner.next(); //public
-        System.out.println("Wpisz nazwisko pracownika");
-        String lastName = scanner.next();
-
-        String[] data = {firstName, lastName};
-
-        return (data);
+    MechanicData(int i) {
+        if(i == 1) {
+            this.mechanicData = mainClassManager.getMechanicData();
+            this.firstName = mechanicData.get(0);
+            this.lastName = mechanicData.get(1);
+            //mechanicData.add(Integer.toString(repearingCars));
+            this.id = Main.listManager.mechanics.size() + 1;
+            this.mechanicData.add(Integer.toString(id));
+            //Main.listManager.carsInRepairHashMap.put(Integer.toString(id), null); //nie działa
+        }
     }
-    public String[] getData(String firstName, String lastName) {
-        String[] data = {firstName, lastName};
-
-        return data;
+    MechanicData(List<String> mechanicData) {
+        this.mechanicData = mechanicData;
+        firstName = mechanicData.get(0);
+        lastName = mechanicData.get(1);
+        id = Integer.parseInt(mechanicData.get(2));
+        //Main.listManager.carsInRepairHashMap.put(Integer.toString(id), repearingCars);
     }
 }
