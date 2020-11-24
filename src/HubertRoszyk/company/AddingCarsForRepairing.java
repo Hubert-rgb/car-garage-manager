@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddingCarsForRepairing {
+    Validator validator = new Validator();
     void addingCarsForRepairing() { //może konstruktor?
-        MainClassManager mainClassManager = new MainClassManager();
+        TextManager textManager = new TextManager();
         Scanner scanner = new Scanner(System.in);
         if(Main.listManager.carsInNotRepair.size() == 0){
             System.out.println("Nie ma żadnego samochodu czekającego na naprawę");
@@ -15,29 +16,42 @@ public class AddingCarsForRepairing {
         } else {
             System.out.println("wpisz numer samochodu");
 
-            mainClassManager.carDispay(Main.listManager.carsInNotRepair);
+            textManager.carDispay(Main.listManager.carsInNotRepair);
 
-            int carNum = scanner.nextInt();
+            String carNumString = scanner.next();
+            int carNum = validator.stringToInt(carNumString);
+            if(carNum == -1) {
+                return;
+            }
 
             System.out.println("wpisz numer pracownika");
 
-            mainClassManager.mechanicDisplay();
+            textManager.mechanicDisplay();
 
-            int mechanicNum = scanner.nextInt();  //wpisywać string
-            String mechanicNumString = Integer.toString(mechanicNum);//isValid
+            String mechanicNumString = scanner.next();  //wpisywać string
+            int mechanicNum = validator.stringToInt(mechanicNumString);//isValid
+            if(mechanicNum == -1) {
+                return;
+            }
 
-            if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null || Main.listManager.carsInRepairHashMap.get(mechanicNumString).size() < 2) { //isValid
+            if(!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
+                System.out.println("Podaj numer id samochodu, który należączy do wcześniej wyświetlonego zbioru");
+            } if(!validator.isMechanicNumValid(Main.listManager.mechanics, mechanicNum)) {
+                System.out.println("Podaj numer id mechanika, z pośród tych których wcześniej wyświetlono");
+            } else if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null || Main.listManager.carsInRepairHashMap.get(mechanicNumString).size() < 2) { //isValid i co jeśli nie należy do zobioru
                 List<String> carsAddedToMechanicsList = new ArrayList<String>();
-                if((Main.listManager.carsInRepairHashMap.get(mechanicNumString)) != null) {
-                    carsAddedToMechanicsList.add((Main.listManager.carsInRepairHashMap.get(mechanicNumString)).get(0));     //bardziej uniwersalnie
-                    System.out.println("dodaje");      //nie działa
+                if(Main.listManager.carsInRepairHashMap.get(mechanicNumString).size() == 0) {
+                    //System.out.println("nic nie dodaje");
+                } else if((Main.listManager.carsInRepairHashMap.get(mechanicNumString)) != null) {
+                    carsAddedToMechanicsList.add((Main.listManager.carsInRepairHashMap.get(mechanicNumString)).get(0));     //bardziej uniwersalnie można zrobić na for ale teraz jest tylko 1 wartość
+                    //System.out.println("dodaje");      //nie działa
                 }
-                carsAddedToMechanicsList.add(Integer.toString(carNum));
+                carsAddedToMechanicsList.add(carNumString);
                 Main.listManager.carsInRepairHashMap.put(mechanicNumString, carsAddedToMechanicsList);
                 Main.listManager.cars.get(carNum-1).status = "InRepair";
                 Main.listManager.carsInRepair.add(Main.listManager.cars.get(carNum - 1));
                 Main.listManager.carsInNotRepair.remove(Main.listManager.cars.get(carNum - 1));
-                System.out.println(Main.listManager.carsInNotRepair.size());
+                //System.out.println(Main.listManager.carsInNotRepair.size());
                 System.out.println("dodano samochód do naprawy");
             } else {
                 System.out.println("Mechanik naprawia już dwa samochody");

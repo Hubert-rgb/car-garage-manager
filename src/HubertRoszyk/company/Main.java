@@ -7,13 +7,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         listManager.listManagerReading();
         boolean isOn = true;
-        MainClassManager menuManager = new MainClassManager();
+        TextManager textManager = new TextManager();
 
         while (isOn == true) {
-            menuManager.infoDisplay();
+            textManager.infoDisplay();
 
             int action;
-            action = menuManager.actionInscrybing();
+            action = textManager.actionInscrybing();
 
             switch (action) {
                 case 1:
@@ -29,23 +29,23 @@ public class Main {
                     break;
                 case 3:
                     // wyświetla tylko nienaprawiane samochody
-                    menuManager.carDispay(listManager.cars);   //status samochodu i ich identyfikatory
+                    textManager.carDispay(listManager.cars);   //status samochodu i ich identyfikatory
                     break;
                 case 4:
-                    menuManager.mechanicDisplay();
+                    textManager.mechanicDisplay();
                     break;
                 case 5:
                     //dodawanie samochodu do naprawy
-                    AddingCarsForRepairingOld addingCarsForRepairing = new AddingCarsForRepairingOld();
+                    AddingCarsForRepairing addingCarsForRepairing = new AddingCarsForRepairing();
                     addingCarsForRepairing.addingCarsForRepairing();
                     break;
                 case 6:
                     //wyświetlanie aut w naprawie
-                    menuManager.carDispay(listManager.carsInRepair);
+                    textManager.carDispay(listManager.carsInRepair);
                     break;
                 case 7:
                     //wyświetlanie aut nie naprawianych
-                    menuManager.carDispay(listManager.carsInNotRepair);
+                    textManager.carDispay(listManager.carsInNotRepair);
                     break;
                 case 8:
                     //oznaczanie samochodów jako naprawione
@@ -54,7 +54,7 @@ public class Main {
                     break;
                 case 9:
                     //wypidywanie naprawionych samochodów
-                    menuManager.carDispay(listManager.carsRepaired);
+                    textManager.carDispay(listManager.carsRepaired);
                     break;
                 case 10:
                     isOn = false;

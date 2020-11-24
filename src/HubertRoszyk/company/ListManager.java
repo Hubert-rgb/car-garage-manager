@@ -34,9 +34,6 @@ public class ListManager {
                     break;
             }
         }
-        /*carsInNotRepair = carsInNotRepairManager.readCar();
-        carsInRepair = carsInRepairManager.readCar();
-        carsRepaired = carsRepairedManager.readCar();*/
         mechanics = mechanicsManager.readMechanic();
         carsInRepairHashMap = hashmapManager.readHashmap();
     }

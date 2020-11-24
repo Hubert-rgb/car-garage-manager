@@ -10,7 +10,7 @@ class CarData { //dostęp do plików
     String plate;
     int id;
     public String status;
-    MainClassManager mainClassManager = new MainClassManager();
+    TextManager mainClassManager = new TextManager();
 
     CarData(int i) {
         if (i == 1) {

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class MainClassManager {
+public class TextManager {
+    Validator validator = new Validator();
     Scanner scanner = new Scanner(System.in);
     void infoDisplay() {
         System.out.println();
@@ -19,19 +20,11 @@ public class MainClassManager {
         System.out.println("8. odznacz samochód jako naprawiony");
         System.out.println("9. wyświetl liste wykonywanych prac w przeszłości");
         System.out.println("10. wyłącz program");
-        //System.out.println("11. sformatuj program");
     }
     int actionInscrybing() {
         String stringAction = scanner.next();
-        //scanner.close();
         int action = 11;
-
-        try
-        {
-            action = Integer.parseInt(stringAction);
-        } catch (NumberFormatException ex) {
-            System.out.println("Wpisz liczbę, a nie znak");
-        }
+        action = validator.stringToInt(stringAction);
         return action;
     }
     void carDispay(List<CarData> cars) {
@@ -48,7 +41,7 @@ public class MainClassManager {
     }
     List<String> getCarData() {
         List<String> carData = new ArrayList<String>();
-        System.out.println("Wpisz markę samochodu"); // dane wejściowe ze skanerem
+        System.out.println("Wpisz markę samochodu");
         String mark = scanner.next();
         System.out.println("Wpisz model samochodu");
         String model = scanner.next();
@@ -59,7 +52,6 @@ public class MainClassManager {
         carData.add(model);
         carData.add(plate);
 
-        //scanner.close();
         return carData;
     }
     List<String> getMechanicData()
@@ -72,7 +64,6 @@ public class MainClassManager {
         List<String> mechanicData = new ArrayList<String>();
         mechanicData.add(firstName);
         mechanicData.add(lastName);
-        //scanner.close();
         return mechanicData;
     }
 }

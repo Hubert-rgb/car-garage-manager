@@ -36,17 +36,13 @@ public class CarsStorageManager {
     }
     List<CarData> readCar() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(this.fileName));
-        String [] readCarsData;
         List<String> readCarData;
         String carsNew;
         List<CarData> cars = new ArrayList<CarData>();
         while ((carsNew = reader.readLine()) != null) { //miało być isValid ale chyaba już nie trzeba
-            readCarsData = carsNew.split("\n");
-            for(int j = 0; j < readCarsData.length; j++) {
-                readCarData = Arrays.asList(readCarsData[j].split(separator));
-                CarData readCar = new CarData(readCarData);
-                cars.add(readCar);
-            }
+            readCarData = Arrays.asList(carsNew.split(separator));
+            CarData readCar = new CarData(readCarData);
+            cars.add(readCar);
         }
         reader.close();
         return cars;

@@ -38,7 +38,7 @@ public class HashmapStorageManager {
         while ((readHashmapString = reader.readLine()) != null) {
             List<String> hashmapValue = new ArrayList<String>();
             readHashmap = readHashmapString.split("\n");
-            for (int i = 0; i < readHashmap.length; i ++) {
+            for (int i = 0; i < readHashmap.length; i ++) { // co tutaj?
                 readHashmapArray = Arrays.asList(readHashmap[i].split(separator));
                 hashmapKey = readHashmapArray.get(0);
                 for(int j = 1; j < readHashmapArray.size(); j++) {

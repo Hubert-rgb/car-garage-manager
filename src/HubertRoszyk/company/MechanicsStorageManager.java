@@ -29,19 +29,15 @@ public class MechanicsStorageManager {
     public List<MechanicData> readMechanic() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("Mechanics.txt"));
         List<MechanicData> mechanics = new ArrayList<MechanicData>();
-        String [] readMechanicsArray;
         List<String> readMechanicArray;
-        String readMechanicsString;
+        String readMechanics;
 
-        while ((readMechanicsString = reader.readLine()) != null) {
-            readMechanicsArray = readMechanicsString.split("\n");
-            for (int i = 0; i < readMechanicsArray.length; i ++) {
-                readMechanicArray = Arrays.asList(readMechanicsArray[i].split(separator));
+        while ((readMechanics = reader.readLine()) != null) {
+            readMechanicArray = Arrays.asList(readMechanics.split(separator));
 
-                MechanicData mechanic = new MechanicData(readMechanicArray);
+            MechanicData mechanic = new MechanicData(readMechanicArray);
 
-                mechanics.add(mechanic);
-            }
+            mechanics.add(mechanic);
         }
         reader.close();
         return (mechanics);
