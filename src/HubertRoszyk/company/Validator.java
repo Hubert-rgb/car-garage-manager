@@ -24,8 +24,8 @@ public class Validator { //może coś jeszcze?
     }
     boolean isCarNumValid(List<CarData> cars, int carNum) {
         int k = 0;
-        for (int i = 0; i < Main.listManager.carsInNotRepair.size(); i++) {
-            if(Main.listManager.carsInNotRepair.get(i).id == carNum){
+        for (int i = 0; i < cars.size(); i++) {
+            if(cars.get(i).id == carNum){
                 k++;
             }
         }

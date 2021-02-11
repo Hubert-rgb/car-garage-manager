@@ -3,7 +3,7 @@ package HubertRoszyk.company;
 import java.io.IOException;
 
 public class ProgramShutDown {
-    void ShutDown() throws IOException {
+    public void ShutDown() throws IOException {
         MechanicsStorageManager mechanicManager = new MechanicsStorageManager("Mechanics.txt");
         mechanicManager.deleteContent();
         //dodawanie mechaników do pliku

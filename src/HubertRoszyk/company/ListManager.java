@@ -6,18 +6,28 @@ import java.io.IOException;
 
 public class ListManager {
     //hashmap
-    CarsStorageManager carsManager = new CarsStorageManager("Cars.txt");
-    CarsStorageManager carsInRepairManager = new CarsStorageManager("CarsInRepair.txt");
-    CarsStorageManager carsRepairedManager = new CarsStorageManager("CarsRepaired.txt");
-    CarsStorageManager carsBeforRepairManager = new CarsStorageManager("CarsInNotRepair.txt");
-    MechanicsStorageManager mechanicsManager = new MechanicsStorageManager("Mechanics.txt");
-    HashmapStorageManager hashmapManager = new HashmapStorageManager("HashMap.txt");
-    List<CarData> cars = new ArrayList<CarData>();
-    List<MechanicData> mechanics = new ArrayList<MechanicData>();
-    List<CarData> carsInNotRepair = new ArrayList<CarData>();
-    List<CarData> carsInRepair = new ArrayList<CarData>();
-    List<CarData> carsRepaired = new ArrayList<CarData>();
-    HashMap<String, List<String>> carsInRepairHashMap = new HashMap<String, List<String>>();
+    private static ListManager instance;
+    public static ListManager getInstance(){
+        if(instance==null){
+            instance = new ListManager();
+        }
+        return instance;
+    }
+    private ListManager() {}
+
+    public CarsStorageManager carsManager = new CarsStorageManager("Cars.txt");
+    public CarsStorageManager carsInRepairManager = new CarsStorageManager("CarsInRepair.txt");
+    public CarsStorageManager carsRepairedManager = new CarsStorageManager("CarsRepaired.txt");
+    public CarsStorageManager carsBeforRepairManager = new CarsStorageManager("CarsInNotRepair.txt");
+    public MechanicsStorageManager mechanicsManager = new MechanicsStorageManager("Mechanics.txt");
+    public HashmapStorageManager hashmapManager = new HashmapStorageManager("HashMap.txt");
+    public List<CarData> cars = new ArrayList<CarData>();
+    public List<MechanicData> mechanics = new ArrayList<MechanicData>();
+    public List<CarData> carsInNotRepair = new ArrayList<CarData>();
+    public List<CarData> carsInRepair = new ArrayList<CarData>();
+    public List<CarData> carsRepaired = new ArrayList<CarData>();
+    public HashMap<String, List<String>> carsInRepairHashMap = new HashMap<String, List<String>>();
+
     void listManagerReading() throws IOException {
 
         cars = carsManager.readCar();

@@ -2,13 +2,13 @@ package HubertRoszyk.company;
 import java.util.ArrayList;
 import java.util.List;
 
-class MechanicData {
+public class MechanicData {
     TextManager mainClassManager = new TextManager();
     List<String> mechanicData = new ArrayList<String>();
     String firstName, lastName;
     int id;
 
-    MechanicData(int i) {
+    public MechanicData(int i) {
         if(i == 1) {
             this.mechanicData = mainClassManager.getMechanicData();
             this.firstName = mechanicData.get(0);

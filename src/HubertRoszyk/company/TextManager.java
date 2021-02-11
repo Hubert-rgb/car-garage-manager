@@ -27,13 +27,13 @@ public class TextManager {
         action = validator.stringToInt(stringAction);
         return action;
     }
-    void carDispay(List<CarData> cars) {
+    public void carDispay(List<CarData> cars) {
         System.out. println("ID marka model rejestracja");
         for (int i = 0; i < cars.size(); i++) {
             System.out.println(cars.get(i).id + " " + cars.get(i).mark + " " + cars.get(i).model + " " + cars.get(i).plate);
         }
     }
-    void mechanicDisplay() {
+    public void mechanicDisplay() {
         System.out.println("imię nazwisko");
         for (int j = 0; j < Main.listManager.mechanics.size(); j++) {
             System.out.println(Main.listManager.mechanics.get(j).id + " " + Main.listManager.mechanics.get(j).firstName + " " + Main.listManager.mechanics.get(j).lastName);

@@ -3,7 +3,7 @@ package HubertRoszyk.company;
 import java.util.ArrayList;
 import java.util.List;
 
-class CarData { //dostęp do plików
+public class CarData { //dostęp do plików
     public List<String> carData = new ArrayList<String>();
     String mark;
     String model;
@@ -12,7 +12,7 @@ class CarData { //dostęp do plików
     public String status;
     TextManager mainClassManager = new TextManager();
 
-    CarData(int i) {
+    public CarData(int i) {
         if (i == 1) {
             this.carData = mainClassManager.getCarData();
             mark = carData.get(0);

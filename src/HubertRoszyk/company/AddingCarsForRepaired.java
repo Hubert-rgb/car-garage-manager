@@ -6,7 +6,7 @@ public class AddingCarsForRepaired {
     Scanner scanner = new Scanner(System.in);
     TextManager textManager = new TextManager();
     Validator validator = new Validator();
-    void addingCarsForRepeared() {
+    public void addingCarsForRepeared() {
         if(Main.listManager.carsInRepair.size() < 1) {
             System.out.println("Nie ma żadnego samochodu w naprawie");
         } else {
@@ -17,7 +17,8 @@ public class AddingCarsForRepaired {
             if(carNum == -1) {
                 return;
             }
-            if(!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
+
+            if(!validator.isCarNumValid(Main.listManager.carsInRepair, carNum)) {
                 System.out.println("Podaj numer id samochodu, który należączy do wcześniej wyświetlonego zbioru");
             } else {
                 for (int i = 0; i < Main.listManager.carsInRepair.size(); i++) {
@@ -30,9 +31,11 @@ public class AddingCarsForRepaired {
                         int outerLoopRepetition = 0;
                         Set<Map.Entry<String, List<String>>> hashmapEntrySet = Main.listManager.carsInRepairHashMap.entrySet();
                         int innerLoopRepetition = 0;
+                        int mechanicsCar = -1;
                         for (Map.Entry<String, List<String>> entry : hashmapEntrySet) { //jak to działa?
-                            for (; outerLoopRepetition < entry.getValue().size(); outerLoopRepetition++) {
+                            for (outerLoopRepetition=0; outerLoopRepetition < entry.getValue().size(); outerLoopRepetition++) {
                                 List<String> ent = new ArrayList<String>();
+                                
                                 ent = entry.getValue();
                                 if (ent.get(outerLoopRepetition).equals(carNumString)) {
                                     mechanicNum = entry.getKey();
@@ -41,8 +44,13 @@ public class AddingCarsForRepaired {
                                 innerLoopRepetition++;
                             }
                         }
+                        for(int j = 0; j < Main.listManager.carsInRepairHashMap.get(mechanicNum).size(); j++) {
+                            if(carNum == Integer.parseInt(Main.listManager.carsInRepairHashMap.get(mechanicNum).get(j))) {
+                                mechanicsCar = j;
+                            }
+                        }
                         List<String> carsInMechanicsRepair = Main.listManager.carsInRepairHashMap.get(mechanicNum);
-                        carsInMechanicsRepair.remove(innerLoopRepetition - outerLoopRepetition);
+                        carsInMechanicsRepair.remove(mechanicsCar);
                         Main.listManager.carsInRepairHashMap.put(mechanicNum, carsInMechanicsRepair);
                     }
 
