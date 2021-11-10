@@ -1,4 +1,5 @@
 package HubertRoszyk.company;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,9 +29,10 @@ public class ListManager {
     public List<CarData> carsRepaired = new ArrayList<CarData>();
     public HashMap<String, List<String>> carsInRepairHashMap = new HashMap<String, List<String>>();
 
-    void listManagerReading() throws IOException {
+    void listManagerReading() throws IOException, SQLException {
 
-        cars = carsManager.readCar();
+        //cars = carsManager.readCar();
+        cars = DatabaseCarManager.getCarsFromDatabase();
         for(int i = 0; i < cars.size(); i++) {
             switch (cars.get(i).status) {
                 case "BeforRepair" :
@@ -44,7 +46,9 @@ public class ListManager {
                     break;
             }
         }
-        mechanics = mechanicsManager.readMechanic();
-        carsInRepairHashMap = hashmapManager.readHashmap();
+        //mechanics = mechanicsManager.readMechanic();
+        mechanics = DatabaseMechanicManager.getMechanicsFromDatabase();
+        //carsInRepairHashMap = hashmapManager.readHashmap();
+        carsInRepairHashMap = DatabaseRepairManager.getRepairsFromDatabase("repairongoing");
     }
 }

@@ -2,8 +2,10 @@ package HubertRoszyk.company.strategy;
 
 import HubertRoszyk.company.AddingCarsForRepaired;
 
+import java.sql.SQLException;
+
 public class AddingCarsForRepairedStrategy implements MenuItemStrategy{
-    public void run() {
+    public void run() throws SQLException {
         //oznaczanie samochodów jako naprawione
         AddingCarsForRepaired addingCarsForRepaired = new AddingCarsForRepaired();
         addingCarsForRepaired.addingCarsForRepeared();

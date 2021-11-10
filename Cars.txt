@@ -1,0 +1,4 @@
+qq;qq;qq;1;InRepair;
+ww;ww;ww;2;Repaired;
+rr;rr;rr;3;BeforRepair;
+tt;tt;tt;4;InRepair;

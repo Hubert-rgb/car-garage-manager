@@ -1,5 +1,6 @@
 package HubertRoszyk.company;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class CarData { //dostęp do plików
     public String status;
     TextManager mainClassManager = new TextManager();
 
-    public CarData(int i) {
+    public CarData(int i) throws SQLException {
         if (i == 1) {
             this.carData = mainClassManager.getCarData();
             mark = carData.get(0);
@@ -21,7 +22,9 @@ public class CarData { //dostęp do plików
             id = Main.listManager.cars.size() + 1;
             carData.add(Integer.toString(id));
             status = "BeforRepair";
-            //carData.add(status);
+            carData.add(status);
+
+            DatabaseCarManager.addCarToDatabase(id, mark, model, plate, status);
         }
     }
     CarData(List<String> carData) {

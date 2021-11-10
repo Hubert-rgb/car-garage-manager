@@ -2,12 +2,15 @@ package HubertRoszyk.company;
 import HubertRoszyk.company.strategy.*;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 public class Main {
     public static ListManager listManager = ListManager.getInstance();
     public static TextManager textManager = new TextManager();
     public static boolean isOn;
+    public static DatabaseConnection databaseManager = new DatabaseConnection();
 
     static HashMap<Integer, MenuItemStrategy> menuStrategies = new HashMap(){{
         put(1, new CreateCarsStrategy());
@@ -24,7 +27,8 @@ public class Main {
 
     }};
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
+
         listManager.listManagerReading();
         isOn = true;
 

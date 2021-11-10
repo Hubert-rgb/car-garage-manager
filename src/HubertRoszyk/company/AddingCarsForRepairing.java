@@ -1,12 +1,13 @@
 package HubertRoszyk.company;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class AddingCarsForRepairing {
     Validator validator = new Validator();
-    public void addingCarsForRepairing() { //może konstruktor?
+    public void addingCarsForRepairing() throws SQLException { //może konstruktor?
         TextManager textManager = new TextManager();
         Scanner scanner = new Scanner(System.in);
         if(Main.listManager.carsInNotRepair.size() == 0){
@@ -36,7 +37,7 @@ public class AddingCarsForRepairing {
 
             mechanicNumString = Integer.toString(mechanicNum);
 
-            System.out.println(carNumString + " " + mechanicNumString);
+            //System.out.println(carNumString + " " + mechanicNumString);
             //System.out.println(Main.listManager.carsInRepairHashMap.get(mechanicNumString));
 
             if(!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
@@ -54,6 +55,10 @@ public class AddingCarsForRepairing {
                 Main.listManager.cars.get(carNum-1).status = "InRepair";
                 Main.listManager.carsInRepair.add(Main.listManager.cars.get(carNum - 1));
                 Main.listManager.carsInNotRepair.remove(Main.listManager.cars.get(carNum - 1));
+
+                DatabaseCarManager.updateCarsTable(Main.listManager.cars.get(carNum-1).status, carNum);
+                DatabaseRepairManager.addRepairToDatabase(carNum, mechanicNum, "repairongoing");
+
                 System.out.println("dodano samochód do naprawy");
             } else {
                 System.out.println("Mechanik naprawia już dwa samochody");

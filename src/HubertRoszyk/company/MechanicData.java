@@ -1,4 +1,5 @@
 package HubertRoszyk.company;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,13 +9,15 @@ public class MechanicData {
     String firstName, lastName;
     int id;
 
-    public MechanicData(int i) {
+    public MechanicData(int i) throws SQLException {
         if(i == 1) {
             this.mechanicData = mainClassManager.getMechanicData();
             this.firstName = mechanicData.get(0);
             this.lastName = mechanicData.get(1);
             this.id = Main.listManager.mechanics.size() + 1;
             this.mechanicData.add(Integer.toString(id));
+
+            DatabaseMechanicManager.addMechanicToDatabase(id, firstName, lastName);
         }
     }
     MechanicData(List<String> mechanicData) {

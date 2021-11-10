@@ -1,9 +1,10 @@
 package HubertRoszyk.company;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ProgramShutDown {
-    public void ShutDown() throws IOException {
+    public void ShutDown() throws IOException, SQLException {
         MechanicsStorageManager mechanicManager = new MechanicsStorageManager("Mechanics.txt");
         mechanicManager.deleteContent();
         //dodawanie mechaników do pliku

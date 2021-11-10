@@ -1,12 +1,13 @@
 package HubertRoszyk.company;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class AddingCarsForRepaired {
     Scanner scanner = new Scanner(System.in);
     TextManager textManager = new TextManager();
     Validator validator = new Validator();
-    public void addingCarsForRepeared() {
+    public void addingCarsForRepeared() throws SQLException {
         if(Main.listManager.carsInRepair.size() < 1) {
             System.out.println("Nie ma żadnego samochodu w naprawie");
         } else {
@@ -23,8 +24,12 @@ public class AddingCarsForRepaired {
             } else {
                 for (int i = 0; i < Main.listManager.carsInRepair.size(); i++) {
                     if (Main.listManager.carsInRepair.get(i).id == carNum) {
-                        Main.listManager.carsRepaired.add(Main.listManager.carsInRepair.get(i));
                         Main.listManager.carsInRepair.get(i).status = "Repaired";
+                        Main.listManager.carsRepaired.add(Main.listManager.carsInRepair.get(i));
+                        DatabaseCarManager.updateCarsTable(Main.listManager.carsInRepair.get(i).status, carNum);
+                        int mechanicId = DatabaseRepairManager.getRepairValuesFromDatabase("repairongoing",carNum);
+                        DatabaseRepairManager.addRepairToDatabase(carNum, mechanicId, "repairdone");
+                        DatabaseRepairManager.deleteRepairFromDatabase("repairongoing", carNum);
                         Main.listManager.carsInRepair.remove(Main.listManager.carsInRepair.get(i));
 
                         String mechanicNum = null;
@@ -52,6 +57,7 @@ public class AddingCarsForRepaired {
                         List<String> carsInMechanicsRepair = Main.listManager.carsInRepairHashMap.get(mechanicNum);
                         carsInMechanicsRepair.remove(mechanicsCar);
                         Main.listManager.carsInRepairHashMap.put(mechanicNum, carsInMechanicsRepair);
+
                     }
 
                 }

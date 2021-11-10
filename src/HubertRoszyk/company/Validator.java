@@ -22,7 +22,7 @@ public class Validator { //może coś jeszcze?
             return -1;
         }
     }
-    boolean isCarNumValid(List<CarData> cars, int carNum) {
+    boolean isCarNumValid(List<CarData> cars, int carNum) { //sprawdza tylko czy liczba należy do "cars" a powinno sprawdzać jeszcze status czy coś
         int k = 0;
         for (int i = 0; i < cars.size(); i++) {
             if(cars.get(i).id == carNum){
@@ -30,6 +30,9 @@ public class Validator { //może coś jeszcze?
             }
         }
         if(k == 0) {
+
+
+
             return false;
         } else {
             return true;
