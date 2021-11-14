@@ -1,4 +1,6 @@
 package HubertRoszyk.company;
+import HubertRoszyk.company.database.DatabaseMechanicManager;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class MechanicData {
             DatabaseMechanicManager.addMechanicToDatabase(id, firstName, lastName);
         }
     }
-    MechanicData(List<String> mechanicData) {
+    public MechanicData(List<String> mechanicData) {
         this.mechanicData = mechanicData;
         firstName = mechanicData.get(0);
         lastName = mechanicData.get(1);

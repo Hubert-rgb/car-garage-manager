@@ -1,4 +1,6 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.database;
+
+import HubertRoszyk.company.CarData;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

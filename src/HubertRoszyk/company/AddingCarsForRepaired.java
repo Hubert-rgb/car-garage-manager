@@ -1,5 +1,8 @@
 package HubertRoszyk.company;
 
+import HubertRoszyk.company.database.DatabaseCarManager;
+import HubertRoszyk.company.database.DatabaseRepairManager;
+
 import java.sql.SQLException;
 import java.util.*;
 

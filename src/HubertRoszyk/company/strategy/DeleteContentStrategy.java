@@ -1,6 +1,6 @@
 package HubertRoszyk.company.strategy;
 
-import HubertRoszyk.company.DatabaseDeletingValues;
+import HubertRoszyk.company.database.DatabaseDeletingValues;
 import HubertRoszyk.company.Main;
 
 import java.io.IOException;

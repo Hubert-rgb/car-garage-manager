@@ -1,4 +1,3 @@
-qq;qq;qq;1;InRepair;
-ww;ww;ww;2;Repaired;
-rr;rr;rr;3;BeforRepair;
-tt;tt;tt;4;InRepair;
+skoda;superb;sdasdwd;1;InRepair;
+mercedes;G;qesudsf;2;Repaired;
+tesla;S;werwe;3;Repaired;

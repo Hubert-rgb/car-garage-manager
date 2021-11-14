@@ -1,5 +1,7 @@
 package HubertRoszyk.company;
 
+import HubertRoszyk.company.database.DatabaseCarManager;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class CarData { //dostęp do plików
             DatabaseCarManager.addCarToDatabase(id, mark, model, plate, status);
         }
     }
-    CarData(List<String> carData) {
+    public CarData(List<String> carData) {
         this.carData = carData;
         mark = carData.get(0);
         model = carData.get(1);

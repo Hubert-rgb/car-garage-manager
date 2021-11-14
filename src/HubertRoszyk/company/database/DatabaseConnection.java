@@ -1,4 +1,4 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.database;
 
 import java.sql.*;
 import java.util.ArrayList;

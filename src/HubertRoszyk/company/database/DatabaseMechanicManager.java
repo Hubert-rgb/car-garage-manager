@@ -1,4 +1,6 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.database;
+
+import HubertRoszyk.company.MechanicData;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,7 +15,7 @@ public class DatabaseMechanicManager {
         Statement statement = connection.createStatement();
 
         String SQLInsertionStatement = "INSERT INTO mechanics VALUES (" + id + ",\"" + firstName + "\",\"" + lastName + "\")";
-        System.out.println(SQLInsertionStatement);
+        //System.out.println(SQLInsertionStatement);
 
         statement.executeUpdate(SQLInsertionStatement);
     }

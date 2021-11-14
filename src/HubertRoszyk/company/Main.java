@@ -10,7 +10,6 @@ public class Main {
     public static ListManager listManager = ListManager.getInstance();
     public static TextManager textManager = new TextManager();
     public static boolean isOn;
-    public static DatabaseConnection databaseManager = new DatabaseConnection();
 
     static HashMap<Integer, MenuItemStrategy> menuStrategies = new HashMap(){{
         put(1, new CreateCarsStrategy());

@@ -1,5 +1,8 @@
 package HubertRoszyk.company;
 
+import HubertRoszyk.company.database.DatabaseCarManager;
+import HubertRoszyk.company.database.DatabaseRepairManager;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +45,7 @@ public class AddingCarsForRepairing {
 
             if(!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
                 System.out.println("Podaj numer id samochodu, który należączy do wcześniej wyświetlonego zbioru");
-            } if(!validator.isMechanicNumValid(Main.listManager.mechanics, mechanicNum)) {
+            } else if(!validator.isMechanicNumValid(Main.listManager.mechanics, mechanicNum)) {
                 System.out.println("Podaj numer id mechanika, z pośród tych których wcześniej wyświetlono");
             } else if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null || Main.listManager.carsInRepairHashMap.get(mechanicNumString).size() < 2) { //isValid i co jeśli nie należy do zobioru
                 List<String> carsAddedToMechanicsList = new ArrayList<String>();
