@@ -1,2 +1,0 @@
-Tymon;Tomczak;1;
-Michał;Jastrzębski;2;

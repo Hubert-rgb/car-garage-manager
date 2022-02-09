@@ -13,7 +13,7 @@ public class MechanicData {
 
     public MechanicData(int i) throws SQLException {
         if(i == 1) {
-            this.mechanicData = mainClassManager.getMechanicData();
+            this.mechanicData = Main.textManager.getMechanicData(); //zmienione
             this.firstName = mechanicData.get(0);
             this.lastName = mechanicData.get(1);
             this.id = Main.listManager.mechanics.size() + 1;
@@ -26,6 +26,6 @@ public class MechanicData {
         this.mechanicData = mechanicData;
         firstName = mechanicData.get(0);
         lastName = mechanicData.get(1);
-        id = Integer.parseInt(mechanicData.get(2));
+        //id = Integer.parseInt(mechanicData.get(2)); //to trzbea zmienić
     }
 }

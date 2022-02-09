@@ -1,3 +1,6 @@
 skoda;superb;sdasdwd;1;InRepair;
 mercedes;G;qesudsf;2;Repaired;
 tesla;S;werwe;3;Repaired;
+sad;nsd;ds;4;InRepair;
+audi;q5;po213;5;BeforRepair;
+BMW;M36;PZELO002;6;BeforRepair;

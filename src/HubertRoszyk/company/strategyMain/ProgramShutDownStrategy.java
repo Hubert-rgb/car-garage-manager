@@ -1,4 +1,4 @@
-package HubertRoszyk.company.strategy;
+package HubertRoszyk.company.strategyMain;
 import HubertRoszyk.company.*;
 import java.io.IOException;
 import java.sql.SQLException;

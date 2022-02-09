@@ -13,7 +13,7 @@ public class Validator { //może coś jeszcze?
             return false;
         }
     }
-    int stringToInt(String stringOfValue) {
+    public int stringToInt(String stringOfValue) {
         if (isItInt(stringOfValue)) {
             int value = Integer.parseInt(stringOfValue);
             return value;

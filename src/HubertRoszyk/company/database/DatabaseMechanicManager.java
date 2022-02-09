@@ -23,7 +23,7 @@ public class DatabaseMechanicManager {
         Connection connection = DatabaseConnection.connect();
         Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); //co to znaczy
         List<MechanicData> mechanicsList = new ArrayList<>();
-        ResultSet mechanicsResult = statement.executeQuery("SELECT * FROM mechanics");
+        ResultSet mechanicsResult = statement.executeQuery("SELECT * FROM accounts");
 
         int size = 0;
         if (mechanicsResult.last())
@@ -33,21 +33,26 @@ public class DatabaseMechanicManager {
         }
         for (int i = 0; i < size; i++) {
             List<String> mechanicDataList = new ArrayList<>();
-            String idString, firstName, lastName;
+            String idString, firstName, lastName, accountType;
             int id;
 
             mechanicsResult.next();
+            accountType = mechanicsResult.getString("accountType");
 
-            idString = mechanicsResult.getString("mechanic_id"); //to może nie działać najwyżej zamiast int dać string i potem zamienić
-            firstName = mechanicsResult.getString("firstName");
-            lastName = mechanicsResult.getString("lastName");
+            if (accountType == "mechanic") {
+                idString = mechanicsResult.getString("account_id"); //to może nie działać najwyżej zamiast int dać string i potem zamienić
+                firstName = mechanicsResult.getString("firstName");
+                lastName = mechanicsResult.getString("lastName");
 
-            mechanicDataList.add(firstName);
-            mechanicDataList.add(lastName);
-            mechanicDataList.add(idString);
+                mechanicDataList.add(firstName);
+                mechanicDataList.add(lastName);
+                mechanicDataList.add(idString);
 
-            MechanicData mechanicData = new MechanicData(mechanicDataList);
-            mechanicsList.add(mechanicData);
+                MechanicData mechanicData = new MechanicData(mechanicDataList);
+                mechanicsList.add(mechanicData);
+            }
+
+
         }
 
         return(mechanicsList);

@@ -1,4 +1,4 @@
-package HubertRoszyk.company.strategy;
+package HubertRoszyk.company.strategyMain;
 
 import HubertRoszyk.company.Main;
 import HubertRoszyk.company.MechanicData;

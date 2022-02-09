@@ -1,4 +1,4 @@
-package HubertRoszyk.company.strategy;
+package HubertRoszyk.company.strategyMain;
 
 import HubertRoszyk.company.AddingCarsForRepairing;
 
@@ -8,6 +8,5 @@ public class AddingCarsForRepairingStrategy implements MenuItemStrategy{
     public void run() throws SQLException {
         //dodawanie samochodu do naprawy
         AddingCarsForRepairing addingCarsForRepairing = new AddingCarsForRepairing();
-        addingCarsForRepairing.addingCarsForRepairing();
     }
 }

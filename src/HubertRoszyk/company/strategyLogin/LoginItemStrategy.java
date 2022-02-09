@@ -1,8 +1,8 @@
-package HubertRoszyk.company.strategy;
+package HubertRoszyk.company.strategyLogin;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-public interface MenuItemStrategy{
+public interface LoginItemStrategy {
     void run() throws IOException, SQLException;
 }

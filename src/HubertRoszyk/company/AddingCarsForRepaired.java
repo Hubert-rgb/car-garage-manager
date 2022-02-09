@@ -8,14 +8,13 @@ import java.util.*;
 
 public class AddingCarsForRepaired {
     Scanner scanner = new Scanner(System.in);
-    TextManager textManager = new TextManager();
     Validator validator = new Validator();
     public void addingCarsForRepeared() throws SQLException {
         if(Main.listManager.carsInRepair.size() < 1) {
             System.out.println("Nie ma żadnego samochodu w naprawie");
         } else {
             System.out.println("wpisz numer id samochodu, który chcesz oznaczyć jako naprawiony");
-            textManager.carDispay(Main.listManager.carsInRepair);
+            Main.textManager.carDispay(Main.listManager.carsInRepair);
             String carNumString = scanner.next();
             int carNum = validator.stringToInt(carNumString);
             if(carNum == -1) {

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class AddingCarsForRepairing {
     Validator validator = new Validator();
-    public void addingCarsForRepairing() throws SQLException { //może konstruktor?
+    public AddingCarsForRepairing() throws SQLException { //może konstruktor?
         TextManager textManager = new TextManager();
         Scanner scanner = new Scanner(System.in);
         if(Main.listManager.carsInNotRepair.size() == 0){
