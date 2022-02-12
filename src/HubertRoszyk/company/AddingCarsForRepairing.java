@@ -40,9 +40,6 @@ public class AddingCarsForRepairing {
 
             mechanicNumString = Integer.toString(mechanicNum);
 
-            //System.out.println(carNumString + " " + mechanicNumString);
-            //System.out.println(Main.listManager.carsInRepairHashMap.get(mechanicNumString));
-
             if(!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
                 System.out.println("Podaj numer id samochodu, który należączy do wcześniej wyświetlonego zbioru");
             } else if(!validator.isMechanicNumValid(Main.listManager.mechanics, mechanicNum)) {

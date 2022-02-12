@@ -9,11 +9,11 @@ import java.sql.SQLException;
 public class DeleteContentStrategy implements MenuItemStrategy{
     public void run() throws IOException, SQLException {
         //dodatek usuwanie zawartości plików tekstowych
-        Main.listManager.carsManager.deleteContent();
-        Main.listManager.carsInRepairManager.deleteContent();
+        /*Main.listManager.carsManager.deleteContent();
+        //Main.listManager.carsInRepairManager.deleteContent();
         Main.listManager.carsBeforRepairManager.deleteContent();
         Main.listManager.carsRepairedManager.deleteContent();
-        Main.listManager.mechanicsManager.deleteContent();
+        Main.listManager.mechanicsManager.deleteContent();*/
 
         Main.listManager.cars.removeAll(Main.listManager.cars);//removeall
         Main.listManager.carsInRepair.removeAll(Main.listManager.carsInRepair);

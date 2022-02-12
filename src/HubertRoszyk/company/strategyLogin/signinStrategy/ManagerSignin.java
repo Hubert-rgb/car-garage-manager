@@ -2,9 +2,8 @@ package HubertRoszyk.company.strategyLogin.signinStrategy;
 
 import HubertRoszyk.company.Main;
 import HubertRoszyk.company.MainManagerPage;
-import HubertRoszyk.company.SigninPage;
+import HubertRoszyk.company.ManagerData;
 import HubertRoszyk.company.database.DatabaseAccountManager;
-import HubertRoszyk.company.database.DatabaseManagerManager;
 
 
 import java.io.BufferedReader;
@@ -22,11 +21,13 @@ public class ManagerSignin implements SigninItemStrategy{
         String mainPassword = reader.readLine();
         reader.close();
 
-        List<String> managerData = new ArrayList<>();
-        managerData = Main.textManager.getManagerData();
+        List<String> managerInputData;
+        managerInputData = Main.textManager.getManagerData();
 
-        if(mainPassword.equals(managerData.get(3))) {
-            DatabaseAccountManager.addAccountToDatabase(managerData.get(0), managerData.get(1), managerData.get(2), "manager");
+        ManagerData manager = new ManagerData(managerInputData.get(0), managerInputData.get(1), managerInputData.get(2), "manager", Main.listManager.accounts.size() + 1);
+
+        if(mainPassword.equals(managerInputData.get(3))) {
+            DatabaseAccountManager.addAccountToDatabase(manager);
 
             MainManagerPage mainManagerPage = new MainManagerPage();
         } else {

@@ -5,27 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MechanicData {
-    TextManager mainClassManager = new TextManager();
-    List<String> mechanicData = new ArrayList<String>();
-    String firstName, lastName;
-    int id;
+public class MechanicData extends AccountData {
+    public String mechanicCode;
 
-    public MechanicData(int i) throws SQLException {
-        if(i == 1) {
-            this.mechanicData = Main.textManager.getMechanicData(); //zmienione
-            this.firstName = mechanicData.get(0);
-            this.lastName = mechanicData.get(1);
-            this.id = Main.listManager.mechanics.size() + 1;
-            this.mechanicData.add(Integer.toString(id));
-
-            DatabaseMechanicManager.addMechanicToDatabase(id, firstName, lastName);
-        }
-    }
-    public MechanicData(List<String> mechanicData) {
-        this.mechanicData = mechanicData;
-        firstName = mechanicData.get(0);
-        lastName = mechanicData.get(1);
-        //id = Integer.parseInt(mechanicData.get(2)); //to trzbea zmienić
+    public MechanicData(String firstName, String lastName, String password, String accountType, int id, String mechanicCode) {
+        super(firstName, lastName, password, accountType, id);
+        this.mechanicCode = mechanicCode;
     }
 }

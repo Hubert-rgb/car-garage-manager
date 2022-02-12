@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class ProgramShutDownStrategy implements MenuItemStrategy{
     public void run() throws IOException, SQLException {
         Main.isOn = false;
-        ProgramShutDown programShutDown = new ProgramShutDown();
-        programShutDown.ShutDown();
+        //UnusedFiles.ProgramShutDown programShutDown = new UnusedFiles.ProgramShutDown();
+        //programShutDown.ShutDown();
     }
 }

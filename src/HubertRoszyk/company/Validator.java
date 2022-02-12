@@ -2,7 +2,7 @@ package HubertRoszyk.company;
 
 import java.util.List;
 
-public class Validator { //może coś jeszcze?
+public class Validator { //Singleton!!!
     boolean isItInt(String value) {
 
         try

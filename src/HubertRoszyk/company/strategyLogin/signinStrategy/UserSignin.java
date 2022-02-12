@@ -1,9 +1,6 @@
 package HubertRoszyk.company.strategyLogin.signinStrategy;
 
-import HubertRoszyk.company.Main;
-import HubertRoszyk.company.MainMechanicPage;
-import HubertRoszyk.company.MainUserPage;
-import HubertRoszyk.company.MechanicData;
+import HubertRoszyk.company.*;
 import HubertRoszyk.company.database.DatabaseAccountManager;
 import HubertRoszyk.company.database.DatabaseUserManager;
 
@@ -16,10 +13,12 @@ public class UserSignin implements SigninItemStrategy{
     public void run() throws IOException, SQLException {
         System.out.println("Twożenie konta użytkownika");
 
-        List<String> userData = new ArrayList<>();
+        List<String> userInputData;
+        userInputData = Main.textManager.getUserData();
 
-        userData = Main.textManager.getUserData();
-        DatabaseAccountManager.addAccountToDatabase(userData.get(0), userData.get(1), userData.get(2), "user");
+        UserData user = new UserData(userInputData.get(0), userInputData.get(1), userInputData.get(2), "user", Main.listManager.accounts.size() + 1);
+
+        DatabaseAccountManager.addAccountToDatabase(user);
 
         MainUserPage mainUserPage = new MainUserPage();
     }

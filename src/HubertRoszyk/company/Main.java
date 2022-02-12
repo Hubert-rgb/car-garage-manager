@@ -11,10 +11,9 @@ public class Main {
     public static void main(String[] args) throws IOException, SQLException {
         listManager.listManagerReading();
         isOn = true;
-        //przed tym logowanie
+
         LoginPage loginPage = new LoginPage();
 
-        //MainManagerPage mainManagerPage = new MainManagerPage();
     }
 }
 

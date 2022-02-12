@@ -34,7 +34,7 @@ public class LoginStrategy implements LoginItemStrategy {
             accountsResult.next();
 
             accountType = accountsResult.getString("accountType");
-            idString = accountsResult.getString("account_id"); //to może nie działać najwyżej zamiast int dać string i potem zamienić
+            idString = accountsResult.getString("accountId"); //to może nie działać najwyżej zamiast int dać string i potem zamienić
             firstName = accountsResult.getString("firstName");
             lastName = accountsResult.getString("lastName");
             password = accountsResult.getString("password");
@@ -43,7 +43,6 @@ public class LoginStrategy implements LoginItemStrategy {
             accountData.add(lastName);
             accountData.add(password);
 
-            System.out.println(loginData + " "+ accountData);
             if (loginData.equals(accountData)) {
                 accountData.add(idString);
                 accountData.add(accountType);
@@ -61,9 +60,7 @@ public class LoginStrategy implements LoginItemStrategy {
                         MainUserPage mainUserPage = new MainUserPage();
                         break;
                 }
-
             }
         }
-        System.out.println("Nie znaleziono konta dla tych danych");
     }
 }

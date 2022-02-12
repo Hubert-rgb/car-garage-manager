@@ -1,7 +1,5 @@
 package HubertRoszyk.company;
 
-import HubertRoszyk.company.strategyLogin.signinStrategy.MechanicSingin;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -88,7 +86,7 @@ public class TextManager {
 
         return carData;
     }
-    public String getMechanicAccount() {
+    public List<String> getMechanicAccount() {
         System.out.println("Wpisz imię mechanika");
         String firstName = scanner.next();
         System.out.println("Wpisz nazwisko mechanika");
@@ -97,34 +95,22 @@ public class TextManager {
         List<String> mechanicData = new ArrayList<>();  //to dać do innej klasy
         mechanicData.add(firstName);
         mechanicData.add(lastName);
-        mechanicData.add("5"); //to jako id
-
-        MechanicData mechanic = new MechanicData(mechanicData);
-
-        Main.listManager.mechanics.add(mechanic);
 
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'
         int targetStringLength = 10;
         Random random = new Random();
 
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
+        String mechanicCode = random.ints(leftLimit, rightLimit + 1)
                 .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
                 .limit(targetStringLength)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
-        return (generatedString);
-    }
-    public List<String> getMechanicData() {
-        System.out.println("Wpisz imię pracownika");
-        String firstName = scanner.next(); //public
-        System.out.println("Wpisz nazwisko pracownika");
-        String lastName = scanner.next();
 
-        List<String> mechanicData = new ArrayList<>();
-        mechanicData.add(firstName);
-        mechanicData.add(lastName);
-        return mechanicData;//ma się zapisywać w bazie danych jako mechanic Code
+        System.out.println(mechanicCode);
+
+        mechanicData.add(mechanicCode);
+        return mechanicData;
     }
     public List<String> getManagerData() {
         System.out.println("Wpisz swoje imie");
@@ -143,7 +129,7 @@ public class TextManager {
         managerData.add(mainPassword);
         return managerData;
     }
-    public List<String> getMechanicData2() {
+    public List<String> getMechanicData() {
         System.out.println("Wpisz kod wygenerowany przez twojego managera");
         String code = scanner.next();
         System.out.println("Wpisz hasło do swojego konta");
