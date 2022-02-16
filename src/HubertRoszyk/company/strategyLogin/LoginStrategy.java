@@ -1,6 +1,9 @@
 package HubertRoszyk.company.strategyLogin;
 
 import HubertRoszyk.company.*;
+import HubertRoszyk.company.Pages.MainManagerPage;
+import HubertRoszyk.company.Pages.MainMechanicPage;
+import HubertRoszyk.company.Pages.MainUserPage;
 import HubertRoszyk.company.database.DatabaseConnection;
 
 import java.io.IOException;
@@ -13,6 +16,7 @@ import java.util.List;
 
 public class LoginStrategy implements LoginItemStrategy {
     public void run() throws IOException, SQLException {
+        Validator validator = new Validator();
         List<String> loginData = new ArrayList<>();
         loginData = Main.textManager.getLoginData();
 
@@ -44,10 +48,14 @@ public class LoginStrategy implements LoginItemStrategy {
             accountData.add(password);
 
             if (loginData.equals(accountData)) {
-                accountData.add(idString);
                 accountData.add(accountType);
+                accountData.add(idString);
+
+                AccountData account = new AccountData(accountData.get(0), accountData.get(1), accountData.get(2), accountData.get(3), validator.stringToInt(accountData.get(4)));
+                Main.listManager.loggedAccount = account;
 
                 System.out.println("Zalogowano na konto\n");
+                //System.out.println(account.firstName);
 
                 switch (accountType) {
                     case "manager":

@@ -1,12 +1,13 @@
 package HubertRoszyk.company.strategyLogin.signinStrategy;
 
+import HubertRoszyk.company.AccountData;
 import HubertRoszyk.company.Main;
-import HubertRoszyk.company.MainMechanicPage;
+import HubertRoszyk.company.MechanicData;
+import HubertRoszyk.company.Pages.MainMechanicPage;
 import HubertRoszyk.company.database.DatabaseAccountManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MechanicSingin implements SigninItemStrategy{
@@ -22,15 +23,21 @@ public class MechanicSingin implements SigninItemStrategy{
         int counter = 0;
         int sizeOfMechanicsList = Main.listManager.mechanics.size();
         for (int i = 0; i < sizeOfMechanicsList; i++) {
-            if (!Main.listManager.mechanics.get(i).password.equals("")) {
+            MechanicData mechanic= Main.listManager.mechanics.get(i);
+            if (!mechanic.password.equals("")) {
                 System.out.println("Utworzono już konto dla tego kodu!!!");
                 System.out.println("Skorzystaj z opcji logowania lub przypomnienia hasła");
                 counter = -1;
             } else {
-                if (Main.listManager.mechanics.get(i).mechanicCode.equals(mechanicCodeInput)) {
+                if (mechanic.mechanicCode.equals(mechanicCodeInput)) {
                     counter++;
-                    Main.listManager.mechanics.get(i).password = password;
-                    DatabaseAccountManager.updateAccountInDatabase(Main.listManager.mechanics.get(i));
+                    mechanic.password = password;
+                    DatabaseAccountManager.updateAccountInDatabase(mechanic);
+                    AccountData account = new AccountData(mechanic.firstName, mechanic.lastName, mechanic.password, mechanic.accountType, mechanic.id);
+
+                    Main.listManager.accounts.add(account);
+                    Main.listManager.loggedAccount = account;
+
                     MainMechanicPage mainMechanicPage = new MainMechanicPage();
                 }
             }

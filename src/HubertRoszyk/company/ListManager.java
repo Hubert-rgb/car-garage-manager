@@ -1,8 +1,5 @@
 package HubertRoszyk.company;
-import HubertRoszyk.company.database.DatabaseAccountManager;
-import HubertRoszyk.company.database.DatabaseCarManager;
-import HubertRoszyk.company.database.DatabaseMechanicManager;
-import HubertRoszyk.company.database.DatabaseRepairManager;
+import HubertRoszyk.company.database.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +10,7 @@ import java.io.IOException;
 public class ListManager {
     //hashmap
     private static ListManager instance;
-    public static ListManager getInstance(){
+    public static ListManager getInstance(){ //to jest singleton
         if(instance==null){
             instance = new ListManager();
         }
@@ -21,8 +18,12 @@ public class ListManager {
     }
     private ListManager() {}
 
+    public AccountData loggedAccount;
+
     public List<CarData> cars = new ArrayList<>();
     public List<AccountData> accounts = new ArrayList<>();
+    public List<UserData> users = new ArrayList<>();
+    public List<ManagerData> managers = new ArrayList<>();
     public List<MechanicData> mechanics = new ArrayList<>();
     public List<CarData> carsInNotRepair = new ArrayList<>();
     public List<CarData> carsInRepair = new ArrayList<>();
@@ -48,6 +49,7 @@ public class ListManager {
         }
         accounts = DatabaseAccountManager.getAccountsFromDatabase();
         mechanics = DatabaseMechanicManager.getMechanicsFromDatabase();
+        users = DatabaseUserManager.getUsersFromDatabase();
         carsInRepairHashMap = DatabaseRepairManager.getRepairsFromDatabase("repairongoing");
     }
 }

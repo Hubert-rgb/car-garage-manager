@@ -1,5 +1,6 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.Pages;
 
+import HubertRoszyk.company.Main;
 import HubertRoszyk.company.strategyLogin.signinStrategy.*;
 import HubertRoszyk.company.strategyMain.MenuItemStrategy;
 

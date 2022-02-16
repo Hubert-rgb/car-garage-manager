@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class TextManager {
     Validator validator = new Validator();
     Scanner scanner = new Scanner(System.in);
-    void landingPageInfoDisplay() {
+    public void landingPageInfoDisplay() {
         System.out.println("Witaj na stronie warsztatu samochodowego!");
         System.out.println("Wpisz numer czynności jaka chcesz wykonać:");
         System.out.println("1. Zaloguj się");
         System.out.println("2. Utwórz nowe konto");
     }
-    void managerInfoDisplay() {
+    public void managerInfoDisplay() {
         System.out.println();
         System.out.println("Wpisz numer czynności jaka chcesz wykonać:");
         System.out.println("1. dodawanie nowego pojazdu");
@@ -26,9 +26,11 @@ public class TextManager {
         System.out.println("7. wyświetl liste samochodów czekających na naprawę");
         System.out.println("8. odznacz samochód jako naprawiony");
         System.out.println("9. wyświetl liste wykonywanych prac w przeszłości");
-        System.out.println("10. wyłącz program");
+        System.out.println("10. wyświetl status naprawy samochodu");
+        System.out.println("11. wyłącz program");
+        System.out.println("12. usuń zapisane dane");
     }
-    void mechanicInfoDisplay() {
+    public void mechanicInfoDisplay() {
         System.out.println();
         System.out.println("Wpisz numer czynności jaka chcesz wykonać:");
         System.out.println("1. wyświetl liste samochodów");
@@ -39,21 +41,21 @@ public class TextManager {
         System.out.println("6. wyświetl liste wykonywanych prac w przeszłości");
         System.out.println("7. wyłącz program");
     }
-    void userInfoDisplay() {
+    public void userInfoDisplay() {
         System.out.println();
         System.out.println("Wpisz numer czynności jaka chcesz wykonać:");
         System.out.println("1. dodawanie nowego pojazdu");
         System.out.println("2. wyświetlanie statusu samochodu"); //do zrobienia
         System.out.println("3. wyłącz program");
     }
-    void signinPageInfoDisplay() {
+    public void signinPageInfoDisplay() {
         System.out.println();
         System.out.println("Wpisz numer typu konta które chcesz utworzyć");
         System.out.println("1. Manager");
         System.out.println("2. Mechanik");
         System.out.println("3. Użytkownik");
     }
-    int actionInscrybing() {
+    public int actionInscrybing() {
         String stringAction = scanner.next();
         int action;
         action = validator.stringToInt(stringAction);

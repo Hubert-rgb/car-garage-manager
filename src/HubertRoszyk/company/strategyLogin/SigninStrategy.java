@@ -1,6 +1,6 @@
 package HubertRoszyk.company.strategyLogin;
 
-import HubertRoszyk.company.SigninPage;
+import HubertRoszyk.company.Pages.SigninPage;
 
 import java.io.IOException;
 import java.sql.SQLException;

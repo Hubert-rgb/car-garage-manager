@@ -1,5 +1,6 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.Pages;
 
+import HubertRoszyk.company.Main;
 import HubertRoszyk.company.strategyMain.*;
 
 import java.io.IOException;
@@ -12,13 +13,14 @@ public class MainManagerPage {
         put(2, new CreateMechanicsStrategy());
         put(3, new ShowCarsStrategy());
         put(4, new ShowMechanicsStrategy());
-        put(5, new AddingCarsForRepairingStrategy());
+        put(5, new AddingCarForRepairingStrategy());
         put(6, new ShowCarsInRepairStrategy());
         put(7, new ShowCarsInNotRepairStrategy());
-        put(8, new AddingCarsForRepairedStrategy());
+        put(8, new AddingCarForRepairedStrategy());
         put(9, new ShowCarsRepairedStrategy());
-        put(10, new ProgramShutDownStrategy());
-        put(11, new DeleteContentStrategy());
+        put(10, new ShowCarStatusStrategy());
+        put(11, new ProgramShutDownStrategy());
+        put(12, new DeleteContentStrategy());
 
     }};
     public MainManagerPage() throws IOException, SQLException {

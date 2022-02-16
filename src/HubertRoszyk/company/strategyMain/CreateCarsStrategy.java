@@ -2,6 +2,8 @@ package HubertRoszyk.company.strategyMain;
 
 import HubertRoszyk.company.CarData;
 import HubertRoszyk.company.ListManager;
+import HubertRoszyk.company.Main;
+import HubertRoszyk.company.database.DatabaseUserManager;
 
 import java.sql.SQLException;
 

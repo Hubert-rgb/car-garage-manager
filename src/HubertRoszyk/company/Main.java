@@ -1,5 +1,7 @@
 package HubertRoszyk.company;
 
+import HubertRoszyk.company.Pages.LoginPage;
+
 import java.io.*;
 import java.sql.SQLException;
 

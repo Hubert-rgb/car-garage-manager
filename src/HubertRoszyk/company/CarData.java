@@ -8,10 +8,10 @@ import java.util.List;
 
 public class CarData { //dostęp do plików
     public List<String> carData = new ArrayList<String>();
-    String mark;
-    String model;
-    String plate;
-    int id;
+    public String mark;
+    public String model;
+    public String plate;
+    public int id;
     public String status;
     TextManager mainClassManager = new TextManager();
 

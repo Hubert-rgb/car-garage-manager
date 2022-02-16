@@ -1,5 +1,6 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.Pages;
 
+import HubertRoszyk.company.Main;
 import HubertRoszyk.company.strategyMain.*;
 
 import java.io.IOException;
@@ -9,10 +10,10 @@ import java.util.HashMap;
 public class MainMechanicPage {
     static HashMap<Integer, MenuItemStrategy> menuStrategies = new HashMap(){{
         put(1, new ShowCarsStrategy());
-        put(2, new AddingCarsForRepairingStrategy());
+        put(2, new AddingCarForRepairingMechanicStrategy());
         put(3, new ShowCarsInRepairStrategy());
         put(4, new ShowCarsInNotRepairStrategy());
-        put(5, new AddingCarsForRepairedStrategy());
+        put(5, new AddingCarForRepairedMechanicStrategy());
         put(6, new ShowCarsRepairedStrategy());
         put(7, new ProgramShutDownStrategy());
     }};

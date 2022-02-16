@@ -1,5 +1,6 @@
-package HubertRoszyk.company;
+package HubertRoszyk.company.Pages;
 
+import HubertRoszyk.company.Main;
 import HubertRoszyk.company.strategyMain.*;
 
 import java.io.IOException;
@@ -8,8 +9,8 @@ import java.util.HashMap;
 
 public class MainUserPage {
     static HashMap<Integer, MenuItemStrategy> menuStrategies = new HashMap(){{
-        put(1, new CreateCarsStrategy());
-        put(2, new ShowCarStatusStrategy());
+        put(1, new UserCreateCarStrategy());
+        put(2, new ShowUserCarsStatusStrategy()); //ShowUserCars
         put(3, new ProgramShutDownStrategy());
     }};
     public MainUserPage() throws IOException, SQLException {

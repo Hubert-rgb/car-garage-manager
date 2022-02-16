@@ -22,8 +22,13 @@ public class DeleteContentStrategy implements MenuItemStrategy{
         Main.listManager.carsInNotRepair.removeAll(Main.listManager.carsInNotRepair);
 
         DatabaseDeletingValues.delateValuses("cars");
+        DatabaseDeletingValues.delateValuses("accounts");
         DatabaseDeletingValues.delateValuses("mechanics");
+        DatabaseDeletingValues.delateValuses("managers");
+        DatabaseDeletingValues.delateValuses("users");
         DatabaseDeletingValues.delateValuses("repairongoing");
         DatabaseDeletingValues.delateValuses("repairdone");
+
+        Main.isOn = false;
     }
 }

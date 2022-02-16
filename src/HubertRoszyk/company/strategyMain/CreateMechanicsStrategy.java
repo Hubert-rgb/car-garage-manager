@@ -13,8 +13,8 @@ public class CreateMechanicsStrategy implements MenuItemStrategy{
     public void run() throws SQLException {
         List<String> mechnaicInputData;
         mechnaicInputData = Main.textManager.getMechanicAccount();
-        int id = Main.listManager.accounts.size() + 1;
-        MechanicData mechanic = new MechanicData(mechnaicInputData.get(0), mechnaicInputData.get(1), "", "mechanic", id, mechnaicInputData.get(2));
+        int accountId = Main.listManager.accounts.size() + 1;
+        MechanicData mechanic = new MechanicData(mechnaicInputData.get(0), mechnaicInputData.get(1), "", "mechanic", accountId, mechnaicInputData.get(2));
 
         DatabaseMechanicManager.addMechanicToDatabase(mechanic);
         DatabaseAccountManager.addAccountToDatabase(mechanic);
