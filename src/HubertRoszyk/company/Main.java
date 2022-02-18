@@ -13,9 +13,9 @@ public class Main {
     public static void main(String[] args) throws IOException, SQLException {
         listManager.listManagerReading();
         isOn = true;
-
-        LoginPage loginPage = new LoginPage();
-
+        while (isOn == true) {
+            LoginPage loginPage = new LoginPage();
+        }
     }
 }
 

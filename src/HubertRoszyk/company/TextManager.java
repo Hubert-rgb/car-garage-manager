@@ -77,10 +77,19 @@ public class TextManager {
         List<String> carData = new ArrayList<>();
         System.out.println("Wpisz markę samochodu");
         String mark = scanner.next();
+        if (validator.isItEscape(mark)) {
+            return null;
+        }
         System.out.println("Wpisz model samochodu");
         String model = scanner.next();
+        if (validator.isItEscape(model)) {
+            return null;
+        }
         System.out.println("Wpisz numer rejestracyjny samochodu");
         String plate = scanner.next();
+        if (validator.isItEscape(plate)) {
+            return null;
+        }
 
         carData.add(mark);
         carData.add(model);
@@ -91,8 +100,14 @@ public class TextManager {
     public List<String> getMechanicAccount() {
         System.out.println("Wpisz imię mechanika");
         String firstName = scanner.next();
+        if (validator.isItEscape(firstName)) {
+            return null;
+        }
         System.out.println("Wpisz nazwisko mechanika");
         String lastName = scanner.next();
+        if (validator.isItEscape(lastName)) {
+            return null;
+        }
 
         List<String> mechanicData = new ArrayList<>();  //to dać do innej klasy
         mechanicData.add(firstName);
@@ -117,12 +132,24 @@ public class TextManager {
     public List<String> getManagerData() {
         System.out.println("Wpisz swoje imie");
         String firstName = scanner.next();
+        if (validator.isItEscape(firstName)) {
+            return null;
+        }
         System.out.println("Wpisz swoje nazwisko");
         String lastName = scanner.next();
+        if (validator.isItEscape(lastName)) {
+            return null;
+        }
         System.out.println("Wpisz hasło do swojego konta");
         String password = scanner.next();
+        if (validator.isItEscape(password)) {
+            return null;
+        }
         System.out.println("Wpisz hasło główne programu (hasło admina)");
         String mainPassword = scanner.next();
+        if (validator.isItEscape(mainPassword)) {
+            return null;
+        }
 
         List<String> managerData = new ArrayList<>();
         managerData.add(firstName);
@@ -134,8 +161,14 @@ public class TextManager {
     public List<String> getMechanicData() {
         System.out.println("Wpisz kod wygenerowany przez twojego managera");
         String code = scanner.next();
+        if (validator.isItEscape(code)) {
+            return null;
+        }
         System.out.println("Wpisz hasło do swojego konta");
         String password = scanner.next();
+        if (validator.isItEscape(password)) {
+            return null;
+        }
 
         List<String> mechanicData = new ArrayList<>();
         mechanicData.add(code);
@@ -145,10 +178,20 @@ public class TextManager {
     public List<String> getUserData() {
         System.out.println("Wpisz swoje imie");
         String firstName = scanner.next();
+        if (validator.isItEscape(firstName)) {
+            return null;
+        }
         System.out.println("Wpisz swoje nazwisko");
         String lastName = scanner.next();
+        if (validator.isItEscape(lastName)) {
+            return null;
+        }
         System.out.println("Wpisz hasło do swojego konta");
         String password = scanner.next();
+        if (validator.isItEscape(password)) {
+            return null;
+        }
+
 
         List<String> userData = new ArrayList<>();
         userData.add(firstName);
@@ -159,10 +202,19 @@ public class TextManager {
     public List<String> getLoginData() {
         System.out.println("Wpisz swoje imie");
         String firstName = scanner.next();
+        if (validator.isItEscape(firstName)) {
+            return null;
+        }
         System.out.println("Wpisz swoje nazwisko");
         String lastName = scanner.next();
+        if (validator.isItEscape(lastName)) {
+            return null;
+        }
         System.out.println("Wpisz hasło do swojego konta");
         String password = scanner.next();
+        if (validator.isItEscape(password)) {
+            return null;
+        }
 
         List<String> loginData = new ArrayList<>();
         loginData.add(firstName);

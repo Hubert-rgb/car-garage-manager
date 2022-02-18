@@ -20,12 +20,15 @@ public class LoginPage {
 
         int action;
         action = Main.textManager.actionInscrybing();
-
-        if(loginStrategies.containsKey(action)) {
-            LoginItemStrategy strategy = loginStrategies.get(action);
-            strategy.run();
+        if (action != -10) {
+            if(loginStrategies.containsKey(action)) {
+                LoginItemStrategy strategy = loginStrategies.get(action);
+                strategy.run();
+            } else {
+                System.out.println("Brak Strategi dla akcji nr:" + action);
+            }
         } else {
-            System.out.println("Brak Strategi dla akcji nr:" + action);
+            Main.isOn = false;
         }
     }
 }

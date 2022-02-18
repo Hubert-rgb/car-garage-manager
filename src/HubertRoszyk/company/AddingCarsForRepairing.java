@@ -24,7 +24,7 @@ public class AddingCarsForRepairing {
 
             String carNumString = scanner.next();
             int carNum = validator.stringToInt(carNumString);
-            if (carNum == -1) {
+            if (carNum == -1 || carNum == -10) {
                 return;
             }
 
@@ -32,26 +32,23 @@ public class AddingCarsForRepairing {
 
             textManager.mechanicDisplay();
 
-            String mechanicNumString = scanner.next();  //wpisywać string
-            int mechanicNum = validator.stringToInt(mechanicNumString);//isValid
-            if (mechanicNum == -1) {
+            String mechanicNumStringIn = scanner.next();  //wpisywać string
+            int mechanicNum = validator.stringToInt(mechanicNumStringIn);//isValid
+            if (mechanicNum == -1 || mechanicNum == -10) {
                 return;
             }
-
-            mechanicNumString = Integer.toString(mechanicNum);
 
             if (!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
                 System.out.println("Podaj numer id samochodu, który należączy do wcześniej wyświetlonego zbioru");
             } else if (!validator.isMechanicNumValid(Main.listManager.mechanics, mechanicNum)) {
                 System.out.println("Podaj numer id mechanika, z pośród tych których wcześniej wyświetlono");
-            } else if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null || Main.listManager.carsInRepairHashMap.get(mechanicNumString).size() < 2) { //isValid i co jeśli nie należy do zobioru
-                List<String> carsAddedToMechanicsList = new ArrayList<String>();
-                if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null) {  //zmiany
-                } else if ((Main.listManager.carsInRepairHashMap.get(mechanicNumString)) != null) {
-                    carsAddedToMechanicsList.add((Main.listManager.carsInRepairHashMap.get(mechanicNumString)).get(0));     //bardziej uniwersalnie można zrobić na for ale teraz jest tylko 1 wartość
+            } else if (Main.listManager.carsInRepairHashMap.get(mechanicNum) == null || Main.listManager.carsInRepairHashMap.get(mechanicNum).size() < 2) { //isValid i co jeśli nie należy do zobioru
+                List<Integer> carsAddedToMechanicsList = new ArrayList<>();
+                if ((Main.listManager.carsInRepairHashMap.get(mechanicNum)) != null) {
+                    carsAddedToMechanicsList.add((Main.listManager.carsInRepairHashMap.get(mechanicNum)).get(0));     //bardziej uniwersalnie można zrobić na for ale teraz jest tylko 1 wartość
                 }
-                carsAddedToMechanicsList.add(carNumString);
-                Main.listManager.carsInRepairHashMap.put(mechanicNumString, carsAddedToMechanicsList);
+                carsAddedToMechanicsList.add(carNum);
+                Main.listManager.carsInRepairHashMap.put(mechanicNum, carsAddedToMechanicsList);
                 Main.listManager.cars.get(carNum - 1).status = "InRepair";
                 Main.listManager.carsInRepair.add(Main.listManager.cars.get(carNum - 1));
                 Main.listManager.carsInNotRepair.remove(Main.listManager.cars.get(carNum - 1));
@@ -70,16 +67,7 @@ public class AddingCarsForRepairing {
         TextManager textManager = new TextManager();
         Scanner scanner = new Scanner(System.in);
 
-        int mechanicListId = -1;
-        System.out.println(Main.listManager.mechanics.get(0).id);
-        for (int i = 0; i < Main.listManager.mechanics.size(); i++) {
-
-            if (Main.listManager.mechanics.get(i).id == Main.listManager.loggedAccount.id) {
-
-                mechanicListId = i;
-            }
-        }
-
+        int accountNum = Main.listManager.loggedAccount.id;
         if(Main.listManager.carsInNotRepair.size() == 0){
             System.out.println("Nie ma żadnego samochodu czekającego na naprawę");
         } else {
@@ -89,36 +77,25 @@ public class AddingCarsForRepairing {
 
             String carNumString = scanner.next();
             int carNum = validator.stringToInt(carNumString);
-            if (carNum == -1) {
+            if (carNum == -1 || carNum == -10) {
                 return;
             }
 
-            textManager.mechanicDisplay();
-
-            String mechanicNumString;  //wpisywać string
-
-            mechanicNumString = Integer.toString(mechanicListId);
-
-            System.out.println(Main.listManager.mechanics.get(mechanicListId).id);
             if (!validator.isCarNumValid(Main.listManager.carsInNotRepair, carNum)) {
                 System.out.println("Podaj numer id samochodu, który należączy do wcześniej wyświetlonego zbioru");
-            } /*else if (!validator.isMechanicNumValid(Main.listManager.mechanics, mechanicListId)) {
-            System.out.println("Błąd przy wybieraniu mechanika");
-            System.out.println("Udaj się do serwisu!!!");1
-        } */else if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null || Main.listManager.carsInRepairHashMap.get(mechanicNumString).size() < 2) { //isValid i co jeśli nie należy do zobioru
-                List<String> carsAddedToMechanicsList = new ArrayList<String>();
-                if (Main.listManager.carsInRepairHashMap.get(mechanicNumString) == null) {  //zmiany
-                } else if ((Main.listManager.carsInRepairHashMap.get(mechanicNumString)) != null) {
-                    carsAddedToMechanicsList.add((Main.listManager.carsInRepairHashMap.get(mechanicNumString)).get(0));     //bardziej uniwersalnie można zrobić na for ale teraz jest tylko 1 wartość
+            } else if (Main.listManager.carsInRepairHashMap.get(accountNum) == null || Main.listManager.carsInRepairHashMap.get(accountNum).size() < 2) { //isValid i co jeśli nie należy do zobioru
+                List<Integer> carsAddedToMechanicsList = new ArrayList<>();
+                if ((Main.listManager.carsInRepairHashMap.get(accountNum)) != null) {
+                    carsAddedToMechanicsList.add((Main.listManager.carsInRepairHashMap.get(accountNum)).get(0));     //bardziej uniwersalnie można zrobić na for ale teraz jest tylko 1 wartość
                 }
-                carsAddedToMechanicsList.add(carNumString);
-                Main.listManager.carsInRepairHashMap.put(mechanicNumString, carsAddedToMechanicsList);
+                carsAddedToMechanicsList.add(carNum);
+                Main.listManager.carsInRepairHashMap.put(accountNum, carsAddedToMechanicsList);
                 Main.listManager.cars.get(carNum - 1).status = "InRepair";
                 Main.listManager.carsInRepair.add(Main.listManager.cars.get(carNum - 1));
                 Main.listManager.carsInNotRepair.remove(Main.listManager.cars.get(carNum - 1));
 
                 DatabaseCarManager.updateCarsTable(Main.listManager.cars.get(carNum - 1).status, carNum);
-                DatabaseRepairManager.addRepairToDatabase(carNum, mechanicListId, "repairongoing");
+                DatabaseRepairManager.addRepairToDatabase(carNum, accountNum, "repairongoing");
 
                 System.out.println("dodano samochód do naprawy");
             } else {

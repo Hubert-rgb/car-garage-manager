@@ -28,7 +28,7 @@ public class ListManager {
     public List<CarData> carsInNotRepair = new ArrayList<>();
     public List<CarData> carsInRepair = new ArrayList<>();
     public List<CarData> carsRepaired = new ArrayList<>();
-    public HashMap<String, List<String>> carsInRepairHashMap = new HashMap<>();
+    public HashMap<Integer, List<Integer>> carsInRepairHashMap = new HashMap<>();
 
     void listManagerReading() throws IOException, SQLException {
 

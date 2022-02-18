@@ -16,6 +16,10 @@ public class UserSignin implements SigninItemStrategy{
 
         List<String> userInputData;
         userInputData = Main.textManager.getUserData();
+
+        if (userInputData == null) {
+            return;
+        }
         List<Integer> integerList = new ArrayList<>();
 
         int accountId = Main.listManager.accounts.size() + 1;

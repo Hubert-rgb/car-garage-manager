@@ -33,6 +33,9 @@ public class ShowUserCarsStatusStrategy implements MenuItemStrategy{
 
         String carNumString = scanner.next();
         int carNum = validator.stringToInt(carNumString);
+        if (carNum == -1 || carNum == -10) {
+            return;
+        }
 
         if (user.carNums.contains(carNum)) {
             String carStatus = Main.listManager.cars.get(carNum - 1).status;

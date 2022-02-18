@@ -19,11 +19,13 @@ public class SigninPage {
 
         int action;
         action = Main.textManager.actionInscrybing();
-        if(signinStrategies.containsKey(action)) {
-            SigninItemStrategy strategy = signinStrategies.get(action);
-            strategy.run();
-        } else {
-            System.out.println("Brak Strategi dla akcji nr:" + action);
+        if (action != -10) {
+            if(signinStrategies.containsKey(action)) {
+                SigninItemStrategy strategy = signinStrategies.get(action);
+                strategy.run();
+            } else {
+                System.out.println("Brak Strategi dla akcji nr:" + action);
+            }
         }
     }
 }

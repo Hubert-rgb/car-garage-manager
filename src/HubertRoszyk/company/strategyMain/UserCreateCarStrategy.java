@@ -13,18 +13,20 @@ public class UserCreateCarStrategy implements MenuItemStrategy{
     public void run() throws SQLException {
         ListManager listManager = ListManager.getInstance();
         CarData car = new CarData(1);
-        listManager.cars.add(car);
-        listManager.carsInNotRepair.add(car);
+        if (car.id != -10) {
+            listManager.cars.add(car);
+            listManager.carsInNotRepair.add(car);
 
-        for (int i = 0; i < Main.listManager.users.size(); i++) {
-            UserData user = Main.listManager.users.get(i); //nie ma tam świerzo stworzonego konta i trzbea zdebugować databaseUser
-            if (Main.listManager.loggedAccount.id == user.id) {
-                List<Integer> carNums;
-                carNums = user.carNums;
-                carNums.add(car.id);
-                user.carNums = carNums;
-                DatabaseUserManager.updateUserInDatabase(user);
-                System.out.println("Dodano samochód do naprawy");
+            for (int i = 0; i < Main.listManager.users.size(); i++) {
+                UserData user = Main.listManager.users.get(i); //nie ma tam świerzo stworzonego konta i trzbea zdebugować databaseUser
+                if (Main.listManager.loggedAccount.id == user.id) {
+                    List<Integer> carNums;
+                    carNums = user.carNums;
+                    carNums.add(car.id);
+                    user.carNums = carNums;
+                    DatabaseUserManager.updateUserInDatabase(user);
+                    System.out.println("Dodano samochód do naprawy");
+                }
             }
         }
     }

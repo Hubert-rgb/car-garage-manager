@@ -17,15 +17,24 @@ public class Validator { //Singleton!!!
         if (isItInt(stringOfValue)) {
             int value = Integer.parseInt(stringOfValue);
             return value;
+        } else if (stringOfValue.equals("esc")) {
+            return -10;
         } else {
             System.out.println("Wpisz liczbę, a nie znak");
             return -1;
         }
     }
+    public boolean isItEscape (String in) {
+        if (in.equals("esc")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public boolean isCarNumValid(List<CarData> cars, int carNum) {
         int k = 0;
-        for (int i = 0; i < cars.size(); i++) {
-            if(cars.get(i).id == carNum && !cars.get(i).status.equals("BeforRepair")){
+        for (CarData car : cars) {
+            if (car.id == carNum) {
                 k++;
             }
         }
@@ -44,6 +53,20 @@ public class Validator { //Singleton!!!
             }
         }
         if(k == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public boolean isMechanicRepairingCar(List<Integer> carNums) {
+        int size = -1;
+        try {
+            size = carNums.size();
+        } catch (Exception ignored) {
+            System.out.println(ignored);
+            return false;
+        }
+        if (size == 0) {
             return false;
         } else {
             return true;

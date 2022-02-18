@@ -15,6 +15,10 @@ public class MechanicSingin implements SigninItemStrategy{
         List<String> mechanicDataInput;
         mechanicDataInput = Main.textManager.getMechanicData();
 
+        if (mechanicDataInput == null) {
+            return;
+        }
+
         String mechanicCodeInput = mechanicDataInput.get(0);
         String password = mechanicDataInput.get(1);
 

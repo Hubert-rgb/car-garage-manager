@@ -24,6 +24,10 @@ public class ManagerSignin implements SigninItemStrategy{
         List<String> managerInputData;
         managerInputData = Main.textManager.getManagerData();
 
+        if (managerInputData == null) {
+            return;
+        }
+
         int accountId = Main.listManager.accounts.size() + 1;
 
         ManagerData manager = new ManagerData(managerInputData.get(0), managerInputData.get(1), managerInputData.get(2), "manager", accountId);

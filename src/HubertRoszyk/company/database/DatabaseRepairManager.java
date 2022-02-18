@@ -38,38 +38,35 @@ public class DatabaseRepairManager {
         String SQLDeleteStatement = "DELETE FROM " + tableName + " WHERE car_id = " + String.valueOf(car_id);
         statement.executeUpdate(SQLDeleteStatement);
     }
-    public static HashMap<String, List<String>> getRepairsFromDatabase(String tableName) throws SQLException {
+    public static HashMap<Integer, List<Integer>> getRepairsFromDatabase(String tableName) throws SQLException {
         Connection connection = DatabaseConnection.connect();
         Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); //co to znaczy
-        HashMap<String, List<String>> repairs = new HashMap<>();
+        HashMap<Integer, List<Integer>> repairs = new HashMap<>();
 
         ResultSet repairsResult = statement.executeQuery("SELECT * FROM " + tableName);
         Statement countStatement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); //creating second statement and result set
         ResultSet countResults = countStatement.executeQuery("SELECT COUNT(*) FROM " + tableName +" AS size");
         int size = 0;
         if(countResults.last()) {
-            size = countResults.getInt("COUNT(*)"); //taking numbers of rows from table
+            size = countResults.getInt("COUNT(*)");
         }
         
         for (int i = 0; i < size; i++) {
-            List<String> carsInRepair = new ArrayList<>();
+            List<Integer> carsInRepair = new ArrayList<>();
             int carId, mechanicId;
             String stringMechanicId, stringCarId;
 
             repairsResult.next();
 
-            carId = repairsResult.getInt("car_id"); //to może nie działać najwyżej zamiast int dać string i potem zamienić
+            carId = repairsResult.getInt("car_id");
             mechanicId = repairsResult.getInt("mechanic_id");
 
-            stringCarId = String.valueOf(carId);
-            stringMechanicId = String.valueOf(mechanicId);
-
-            if (repairs.get(stringMechanicId) != null) {
-                carsInRepair = repairs.get(stringMechanicId);
+            if (repairs.get(mechanicId) != null) {
+                carsInRepair = repairs.get(mechanicId);
             }
 
-            carsInRepair.add(stringCarId);
-            repairs.put(stringMechanicId, carsInRepair); //nie wiem dlaczego nie int
+            carsInRepair.add(carId);
+            repairs.put(mechanicId, carsInRepair);
         }
 
         return(repairs);

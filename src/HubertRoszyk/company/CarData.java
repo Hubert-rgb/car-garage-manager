@@ -18,15 +18,19 @@ public class CarData { //dostęp do plików
     public CarData(int i) throws SQLException {
         if (i == 1) {
             this.carData = mainClassManager.getCarData();
-            mark = carData.get(0);
-            model = carData.get(1);
-            plate = carData.get(2);
-            id = Main.listManager.cars.size() + 1;
-            carData.add(Integer.toString(id));
-            status = "BeforRepair";
-            carData.add(status);
+            if (this.carData != null) {
+                mark = carData.get(0);
+                model = carData.get(1);
+                plate = carData.get(2);
+                id = Main.listManager.cars.size() + 1;
+                carData.add(Integer.toString(id));
+                status = "BeforRepair";
+                carData.add(status);
 
-            DatabaseCarManager.addCarToDatabase(id, mark, model, plate, status);
+                DatabaseCarManager.addCarToDatabase(id, mark, model, plate, status);
+            } else {
+                id = -10;
+            }
         }
     }
     public CarData(List<String> carData) {
